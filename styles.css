@@ -1,0 +1,228 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --ink: #1f2937;
+  --muted: #667085;
+  --line: #d7dee8;
+  --accent: #0f9f8a;
+  --accent-strong: #087969;
+  --tile: #fff9ed;
+  --tile-border: #e8c77d;
+  --selected: #ffcf4a;
+  --matched: #d7f6ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(15, 159, 138, 0.14), transparent 24rem),
+    linear-gradient(135deg, #f9fbff 0%, var(--bg) 48%, #eef6f1 100%);
+  color: var(--ink);
+}
+
+.app {
+  width: min(96vw, 980px);
+  padding: 24px;
+}
+
+.hud {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent-strong);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 54px);
+  line-height: 1;
+}
+
+.stats {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stat,
+.install-button,
+button {
+  min-width: 86px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 30px rgba(31, 41, 55, 0.08);
+}
+
+.stat {
+  padding: 10px 14px;
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 22px;
+}
+
+.install-button,
+button {
+  padding: 0 20px;
+  color: white;
+  font: inherit;
+  font-weight: 800;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.install-button:hover,
+button:hover {
+  background: var(--accent-strong);
+}
+
+.install-button[hidden] {
+  display: none;
+}
+
+.board-wrap {
+  position: relative;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 24px 60px rgba(31, 41, 55, 0.12);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(40px, 1fr));
+  gap: 8px;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  aspect-ratio: 8 / 6;
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  border: 2px solid var(--tile-border);
+  border-radius: 8px;
+  background: var(--tile);
+  color: #2d2a22;
+  font-size: clamp(24px, 5vw, 44px);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: #d1982b;
+}
+
+.tile.selected {
+  border-color: #ba7b00;
+  background: var(--selected);
+  transform: translateY(-3px);
+}
+
+.tile.empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.path-layer {
+  position: absolute;
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  pointer-events: none;
+}
+
+.path-layer polyline {
+  fill: none;
+  stroke: #0f9f8a;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 3px 3px rgba(15, 159, 138, 0.32));
+}
+
+.message {
+  min-height: 24px;
+  margin: 14px 4px 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 15px;
+}
+
+@media (max-width: 680px) {
+  body {
+    place-items: start center;
+  }
+
+  .app {
+    padding: 16px;
+  }
+
+  .hud {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .stat,
+  .install-button,
+  button {
+    flex: 1;
+  }
+
+  .install-button,
+  button {
+    min-height: 58px;
+  }
+
+  .board-wrap {
+    padding: 10px;
+  }
+
+  .board {
+    gap: 5px;
+  }
+
+  .path-layer {
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
+}
