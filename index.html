@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f9f8a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="连连看">
+  <title>AI 编程测试 - 连连看</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hud" aria-label="游戏状态">
+      <div>
+        <p class="eyebrow">AI 编程测试 01</p>
+        <h1>连连看小游戏</h1>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span>用时</span>
+          <strong id="timer">00:00</strong>
+        </div>
+        <div class="stat">
+          <span>剩余</span>
+          <strong id="remaining">0</strong>
+        </div>
+        <button id="installApp" class="install-button" type="button" hidden>安装</button>
+        <button id="restart" type="button">重开</button>
+      </div>
+    </section>
+
+    <section class="board-wrap">
+      <div id="board" class="board" aria-label="连连看棋盘"></div>
+      <svg id="pathLayer" class="path-layer" aria-hidden="true"></svg>
+    </section>
+
+    <p id="message" class="message">点击两个相同图案，若能用不超过两个转角连接，就会消除。</p>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
