@@ -1,0 +1,20 @@
+{
+  "name": "AI 编程测试 - 连连看小游戏",
+  "short_name": "连连看",
+  "description": "一个可以安装到手机桌面的连连看 PWA 小游戏。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0f9f8a",
+  "categories": ["games", "education"],
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
